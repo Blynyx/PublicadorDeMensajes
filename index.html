@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicador de mensajes</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="barra-superior">
+    <div>
+      <p class="etiqueta">Ingeniería Web</p>
+      <h1>Publicador de mensajes</h1>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-formulario">
+      <h2>Nueva publicación</h2>
+      <p class="ayuda">Completa los datos y envía la publicación a JSONPlaceholder.</p>
+
+      <form id="form-publicacion" novalidate>
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input id="titulo" name="titulo" type="text" maxlength="80"
+                 placeholder="Ejemplo: Importancia de JavaScript asíncrono">
+          <small><span id="contador-titulo">0</span>/80 caracteres</small>
+        </div>
+
+        <div class="campo">
+          <label for="contenido">Contenido</label>
+          <textarea id="contenido" name="contenido" rows="7" maxlength="300"
+                    placeholder="Escribe el contenido del mensaje"></textarea>
+          <small><span id="contador-contenido">0</span>/300 caracteres</small>
+        </div>
+
+        <div class="acciones">
+          <button id="btn-publicar" type="submit">Publicar mensaje</button>
+          <button id="btn-limpiar" class="secundario" type="button">Limpiar</button>
+        </div>
+      </form>
+
+      <div id="estado" class="estado" aria-live="polite"></div>
+    </section>
+
+    <aside class="panel panel-preview">
+      <h2>Vista previa</h2>
+      <article class="preview">
+        <h3 id="preview-titulo">Tu título aparecerá aquí</h3>
+        <p id="preview-contenido">El contenido de tu publicación se mostrará aquí mientras escribes.</p>
+      </article>
+
+      <div class="estado-tecnico">
+        <h3>Estado técnico</h3>
+        <dl>
+          <div><dt>Método</dt><dd id="dato-metodo">POST</dd></div>
+          <div><dt>Estado HTTP</dt><dd id="dato-http">—</dd></div>
+          <div><dt>ID recibido</dt><dd id="dato-id">—</dd></div>
+        </dl>
+      </div>
+    </aside>
+
+    <section id="resultado" class="panel resultado oculto" aria-live="polite">
+      <div class="encabezado-seccion">
+        <div>
+          <p class="etiqueta">Respuesta del servidor</p>
+          <h2>Publicación recibida</h2>
+        </div>
+        <span class="badge">Éxito</span>
+      </div>
+
+      <div class="datos-respuesta">
+        <p><strong>ID:</strong> <span id="resultado-id"></span></p>
+        <p><strong>Título:</strong> <span id="resultado-titulo"></span></p>
+        <p><strong>Contenido:</strong> <span id="resultado-contenido"></span></p>
+      </div>
+    </section>
+
+    <section class="panel historial">
+      <div class="encabezado-seccion">
+        <div>
+          <p class="etiqueta">Sesión actual</p>
+          <h2>Historial de publicaciones</h2>
+        </div>
+        <span id="contador-historial" class="contador">0</span>
+      </div>
+
+      <div id="lista-historial" class="lista-historial">
+        <p class="vacio">Todavía no has publicado mensajes en esta sesión.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Proyecto académico · API: JSONPlaceholder
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
